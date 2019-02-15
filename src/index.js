@@ -3,27 +3,38 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const title = React.createElement(
-  'h1',
-  { id: 'main-title', title: 'This is a title.' },
-  'My First React Element!'
-);
+const Header = () => {
+  return (
+    <header>
+      <h1> Scoreboard</h1>
+      <span className="stats"> Players: 1</span>
+    </header>
+  )
+};
 
-const desc = React.createElement(
-  'p',
-  null,
-  'I just learned how to create a React node to render in the DOM'
-);
+const Player = () => {
+  return (
+    <div className="player">
+    <span className="player-name">
+      Marcy 
+    </span>
+    <Counter/>
+    </div>
+  )
+};
 
-const header = React.createElement(
-  'header',
-  null,
-  title, 
-  desc
-  
-)
+const Counter = () => {
+  return (
+    <div className="counter">
+    <button className="counter-action decrement"> - </button>
+    <button className="counter-score"> 35</button>
+    <button className="counter-action increment"> + </button>
+    </div>
+  )
+};
+
 ReactDOM.render(
-  header, 
+  <Player/>,
   document.getElementById('root')
   );
 
