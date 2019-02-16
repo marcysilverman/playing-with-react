@@ -3,6 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+const players = [
+  {
+    name: "Marcy",
+    score: 50
+  },
+  {
+    name: "Treasure",
+    score: 85
+  },
+  {
+    name: "Ashley",
+    score: 95
+  },
+  {
+    name: "James",
+    score: 80
+  }
+]
 const Header = (props) => {
   return (
     <header>
@@ -33,20 +51,22 @@ const Counter = (props) => {
   )
 };
 
-const App = () => {
+const App = (props) => {
   return (
     <div className="scoreboard">
-      <Header title="scoreboard" totalPlayers={4} />
-      <Player name="Marcy" score={50} />
-      <Player name="Jeff" score={20} />
-      <Player name="Sarah" score={10} />
-      <Player name="Michael" score={40}/ >
+      <Header title="scoreboard" totalPlayers={props.initialPlayers.length} />
+
+      {props.initialPlayers.map(player =>
+         <Player 
+         name={player.name}
+         score={player.score} 
+      /> )}
     </div>
   )
 }
 
 ReactDOM.render(
-  <App/>,
+  <App initialPlayers={players}/>,
   document.getElementById('root')
   );
 
