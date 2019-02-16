@@ -3,38 +3,50 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
-      <h1> Scoreboard</h1>
-      <span className="stats"> Players: 1</span>
+      <h1> { props.title }</h1>
+      <span className="stats"> { props.totalPlayers }</span>
     </header>
   )
 };
 
-const Player = () => {
+const Player = (props) => {
   return (
     <div className="player">
     <span className="player-name">
-      Marcy 
+      { props.name }
     </span>
-    <Counter/>
+    <Counter score={props.score}/>
     </div>
   )
 };
 
-const Counter = () => {
+const Counter = (props) => {
   return (
     <div className="counter">
     <button className="counter-action decrement"> - </button>
-    <button className="counter-score"> 35</button>
+    <button className="counter-score"> { props.score} </button>
     <button className="counter-action increment"> + </button>
     </div>
   )
 };
 
+const App = () => {
+  return (
+    <div className="scoreboard">
+      <Header title="scoreboard" totalPlayers={4} />
+      <Player name="Marcy" score={50} />
+      <Player name="Jeff" score={20} />
+      <Player name="Sarah" score={10} />
+      <Player name="Michael" score={40}/ >
+    </div>
+  )
+}
+
 ReactDOM.render(
-  <Player/>,
+  <App/>,
   document.getElementById('root')
   );
 
